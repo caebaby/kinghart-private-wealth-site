@@ -175,16 +175,17 @@
     .intro-card h3 { margin-bottom: 24px; }
     .intro-card p { max-width: 800px; margin-inline: auto; }
 
-    .signature { padding: clamp(86px, 8vw, 125px) 0; background: var(--paper); }
-    .signature-head { text-align: center; margin-bottom: 70px; }
+    .signature { padding: clamp(86px, 8vw, 125px) 0; background: var(--paper); border-top: 1px solid rgba(86,132,176,.22); border-bottom: 1px solid rgba(86,132,176,.22); }
+    .signature-head { text-align: center; margin-bottom: clamp(46px, 5vw, 70px); }
     .signature-head h2 { max-width: 1000px; margin-inline: auto; }
-    .sequence { display: grid; gap: 0; }
-    .sequence-row { position: relative; min-height: 150px; display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 24px; overflow: hidden; }
-    .sequence-row::after { content: ""; position: absolute; bottom: 0; left: 0; height: 5px; width: 100%; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .48s cubic-bezier(.2,.75,.25,1); }
+    .sequence { display: grid; gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .sequence-row { position: relative; min-height: clamp(132px, 12vw, 168px); display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: clamp(24px, 4vw, 64px); padding: 10px clamp(8px, 2vw, 28px); overflow: hidden; }
+    .sequence-row:not(:last-child) { border-bottom: 1px solid var(--line); }
+    .sequence-row::after { content: ""; position: absolute; bottom: -1px; left: 0; height: 2px; width: 100%; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .48s cubic-bezier(.2,.75,.25,1); }
     .sequence-row:hover::after, .sequence-row:focus-visible::after { transform: scaleX(1); }
-    .sequence-number { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: 1.15rem; font-weight: 600; letter-spacing: .04em; }
-    .sequence-phrase { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: clamp(2.6rem, 5.8vw, 6.8rem); line-height: .95; font-weight: 500; letter-spacing: -.045em; transition: transform .48s cubic-bezier(.2,.75,.25,1); }
-    .sequence-row:hover .sequence-phrase, .sequence-row:focus-visible .sequence-phrase { transform: translateY(-8px); }
+    .sequence-number { align-self: stretch; display: flex; align-items: center; border-right: 1px solid var(--line); font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: 1.05rem; font-weight: 600; letter-spacing: .04em; }
+    .sequence-phrase { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: clamp(2.5rem, 5.2vw, 6.25rem); line-height: 1; font-weight: 500; letter-spacing: -.04em; transition: transform .48s cubic-bezier(.2,.75,.25,1); }
+    .sequence-row:hover .sequence-phrase, .sequence-row:focus-visible .sequence-phrase { transform: translateY(-5px); }
 
     .split-chapter { background: #ecece8; }
     .center-title { text-align: center; margin: 0 auto 65px; max-width: 980px; }
@@ -283,17 +284,11 @@
     .services-layout { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: start; }
     .services-layout h3 { position: sticky; top: 130px; }
     .service-rail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-    .service-card { height: 240px; overflow: hidden; }
-    .service-card::before { content: ""; position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; opacity: 0; transform: scale(1.06); transition: opacity .32s ease, transform .52s cubic-bezier(.2,.75,.25,1); }
-    .service-card:nth-child(1)::before { background-image: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.78)), url("assets/planning-whole.jpg"); }
-    .service-card:nth-child(2)::before { background-image: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.78)), url("assets/planning-focus.jpg"); background-position: 52% center; }
-    .service-card:nth-child(3)::before { background-image: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.8)), url("assets/planning-coordinate.jpg"); }
-    .service-card:nth-child(4)::before { background-image: linear-gradient(180deg, rgba(83,30,14,.06), rgba(83,30,14,.76)), url("assets/legacy-grandfathers.jpg"); background-position: 45% center; }
-    .service-card:nth-child(5)::before { background-image: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.8)), url("assets/planning-order.jpg"); }
-    .service-card:nth-child(6)::before { background-image: linear-gradient(180deg, rgba(83,30,14,.06), rgba(83,30,14,.76)), url("assets/planning-revisit.jpg"); }
-    .service-card:hover::before, .service-card:focus-within::before, .service-card[open]::before { opacity: 1; transform: scale(1); }
+    .service-card { height: 240px; overflow: hidden; transition: box-shadow .24s ease; }
     .service-card:hover > summary, .service-card:focus-within > summary, .service-card[open] > summary { opacity: 0; }
-    .service-card .expand-copy { background: linear-gradient(180deg, rgba(23,63,82,.02) 20%, rgba(23,63,82,.88) 100%); }
+    .service-card:hover, .service-card:focus-within, .service-card[open] { transform: none; box-shadow: inset 0 0 0 1px rgba(195,209,230,.58); }
+    .service-card .expand-copy { align-items: center; justify-content: center; padding: 28px; background: var(--ink); text-align: center; }
+    .service-card .expand-copy h4 { margin: 0 0 12px; }
 
     .closing { padding: 120px 0; text-align: center; border-top: 1px solid var(--line); }
     .closing h2 { max-width: 1000px; margin: 0 auto 28px; }
@@ -349,8 +344,9 @@
       .btn { width: 100%; }
       .hero-note { margin-top: 28px; }
       .intro-card { padding: 52px 24px 38px; }
-      .sequence-row { min-height: 150px; grid-template-columns: 42px 1fr; gap: 10px; }
-      .sequence-phrase { font-size: clamp(2.2rem, 12vw, 3.5rem); }
+      .sequence-row { min-height: 112px; grid-template-columns: 48px 1fr; gap: 18px; padding: 0 8px; }
+      .sequence-number { font-size: .88rem; }
+      .sequence-phrase { font-size: clamp(2rem, 10vw, 3.25rem); }
       .center-title { margin-bottom: 38px; }
       summary { padding: 22px 20px; }
       .details-copy { padding: 0 22px 26px; }
@@ -372,7 +368,7 @@
       .expand-copy h4 { display: none; }
       .moment-card[open] .expand-copy h4, .service-card[open] .expand-copy h4 { display: block; margin: 0 0 8px; }
       .expand-copy p { font-size: .86rem; }
-      .moment-card:hover, .moment-card:focus-within, .service-card:hover, .service-card:focus-within { transform: none; box-shadow: none; }
+      .moment-card:hover, .moment-card:focus-within { transform: none; box-shadow: none; }
       .legacy-copy { padding: 30px 24px; }
       .closing .button-row, .quiz-links { display: grid; }
       .footer-grid { grid-template-columns: 1fr; gap: 30px; }
