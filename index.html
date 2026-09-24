@@ -256,6 +256,7 @@
     .moment-card:nth-child(6)::before { background-position: 80% center; }
     .moment-card:nth-child(7)::before { background-position: 100% center; }
     .moment-card > summary, .service-card > summary { position: relative; z-index: 1; height: 100%; padding: 24px 20px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 18px; color: inherit; }
+    .service-card > summary { transition: opacity .18s ease; }
     .moment-card > summary::before, .service-card > summary::before { display: none; }
     .moment-card .num { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,.55); }
     .moment-card h4, .service-card h4 { font-size: 1.38rem; margin: 0; }
@@ -282,8 +283,17 @@
     .services-layout { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: start; }
     .services-layout h3 { position: sticky; top: 130px; }
     .service-rail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-    .service-card { height: 240px; }
-    .service-card .expand-copy { background: var(--blue); }
+    .service-card { height: 240px; overflow: hidden; }
+    .service-card::before { content: ""; position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; opacity: 0; transform: scale(1.06); transition: opacity .32s ease, transform .52s cubic-bezier(.2,.75,.25,1); }
+    .service-card:nth-child(1)::before { background-image: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.78)), url("assets/planning-whole.jpg"); }
+    .service-card:nth-child(2)::before { background-image: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.78)), url("assets/planning-focus.jpg"); background-position: 52% center; }
+    .service-card:nth-child(3)::before { background-image: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.8)), url("assets/planning-coordinate.jpg"); }
+    .service-card:nth-child(4)::before { background-image: linear-gradient(180deg, rgba(83,30,14,.06), rgba(83,30,14,.76)), url("assets/legacy-grandfathers.jpg"); background-position: 45% center; }
+    .service-card:nth-child(5)::before { background-image: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.8)), url("assets/planning-order.jpg"); }
+    .service-card:nth-child(6)::before { background-image: linear-gradient(180deg, rgba(83,30,14,.06), rgba(83,30,14,.76)), url("assets/planning-revisit.jpg"); }
+    .service-card:hover::before, .service-card:focus-within::before, .service-card[open]::before { opacity: 1; transform: scale(1); }
+    .service-card:hover > summary, .service-card:focus-within > summary, .service-card[open] > summary { opacity: 0; }
+    .service-card .expand-copy { background: linear-gradient(180deg, rgba(23,63,82,.02) 20%, rgba(23,63,82,.88) 100%); }
 
     .closing { padding: 120px 0; text-align: center; border-top: 1px solid var(--line); }
     .closing h2 { max-width: 1000px; margin: 0 auto 28px; }
@@ -352,15 +362,15 @@
       .portrait-photo img { object-position: 50% 30%; }
       .moments-rail, .service-rail { width: calc(100% - 32px); grid-template-columns: 1fr; gap: 8px; }
       .moment-card, .service-card { height: 88px; }
-      .moment-card { transition: height .28s cubic-bezier(.2,.75,.25,1); }
-      .moment-card[open] { height: 164px; }
+      .moment-card, .service-card { transition: height .28s cubic-bezier(.2,.75,.25,1); }
+      .moment-card[open], .service-card[open] { height: 164px; }
       .moment-card > summary, .service-card > summary { padding: 17px 18px; flex-direction: row; align-items: center; }
-      .moment-card[open] > summary { opacity: 0; }
+      .moment-card[open] > summary, .service-card[open] > summary { opacity: 0; }
       .moment-card .num { min-width: 28px; }
       .moment-card h4, .service-card h4 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.08rem; font-weight: 600; letter-spacing: 0; }
       .expand-copy { padding: 15px 18px; justify-content: center; }
       .expand-copy h4 { display: none; }
-      .moment-card[open] .expand-copy h4 { display: block; margin: 0 0 8px; }
+      .moment-card[open] .expand-copy h4, .service-card[open] .expand-copy h4 { display: block; margin: 0 0 8px; }
       .expand-copy p { font-size: .86rem; }
       .moment-card:hover, .moment-card:focus-within, .service-card:hover, .service-card:focus-within { transform: none; box-shadow: none; }
       .legacy-copy { padding: 30px 24px; }
