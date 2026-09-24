@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kinghart Private Wealth helps successful professionals, business owners, and families organize their financial lives and turn thoughtful planning into action.">
+  <title>Kinghart Private Wealth</title>
+  <link rel="icon" type="image/png" href="assets/kinghart-favicon.png">
+  <!--
+    Phoenix-area media licensed under the Pexels License (free commercial use; attribution not required):
+    Video: Logan Voss — Scottsdale desert and McDowell Mountains — https://www.pexels.com/video/30848101/
+    Still: Carter Marchant — Phoenix Sonoran desert — https://www.pexels.com/photo/35528171/
+    Planning / whole picture: Blake Cheek — https://unsplash.com/photos/5eJ8f-Ml_8A
+    Planning / focus: Lane Gore — https://unsplash.com/photos/Jvjcu_2ffaw
+    Planning / order: Tapas S — https://www.pexels.com/photo/32470476/
+    Planning / coordination: Roy Serafin — https://www.pexels.com/photo/36181782/
+    Planning / revisit: Royce Fonseca — https://unsplash.com/photos/qImL_EQ0ifI
+    Legacy grandfathers: mustaf4ucar — https://www.pexels.com/photo/16490325/
+    Legacy hands: Liane Metzler — https://unsplash.com/photos/B32qg6Ua34Y
+    License: https://www.pexels.com/license/
+    License: https://unsplash.com/license
+  -->
+  <style>
+    :root {
+      --paper: #f7f6f2;
+      --white: #ffffff;
+      --ink: #173f52;
+      --blue: #5684b0;
+      --blue-light: #c3d1e6;
+      --orange: #c16630;
+      --rust: #783215;
+      --brown: #531e0e;
+      --line: rgba(86, 132, 176, .36);
+      --max: 1440px;
+      --radius: 22px;
+      --nav-h: 94px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    img, video { display: block; max-width: 100%; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1, h2, h3, h4 { font-family: "Iowan Old Style", Baskerville, "Palatino Linotype", Palatino, Georgia, serif; font-weight: 500; line-height: 1.02; letter-spacing: -.025em; }
+    h1 { font-size: clamp(3rem, 5.6vw, 6rem); max-width: 980px; }
+    h2 { font-size: clamp(2.35rem, 4vw, 4.8rem); }
+    h3 { font-size: clamp(1.55rem, 2.25vw, 2.6rem); }
+    p { margin-bottom: 1.2em; }
+    :focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+
+    .container { width: min(calc(100% - 64px), var(--max)); margin-inline: auto; }
+    .section { padding: clamp(80px, 9vw, 150px) 0; }
+    .eyebrow { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: 1rem; font-weight: 600; letter-spacing: .01em; text-transform: none; }
+    .muted { color: rgba(23, 63, 82, .72); }
+
+    .btn {
+      display: inline-flex;
+      min-height: 58px;
+      padding: 15px 34px;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--rust); color: #fff; }
+    .btn-primary:hover { background: var(--brown); }
+    .btn-secondary { background: var(--ink); color: #fff; }
+    .btn-secondary:hover { background: var(--brown); }
+    .btn-ghost { border-color: currentColor; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 246, 242, .96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(86, 132, 176, .12);
+    }
+    .nav {
+      min-height: var(--nav-h);
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      align-items: center;
+      gap: 28px;
+    }
+    .brand { display: inline-flex; gap: 12px; align-items: center; font-family: "Iowan Old Style", Baskerville, Georgia, serif; text-decoration: none; font-weight: 600; font-size: 1.55rem; letter-spacing: -.02em; }
+    .brand-mark { width: 27px; height: 43px; flex: 0 0 auto; object-fit: contain; }
+    .brand small { display: block; margin-top: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: .55rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--blue); }
+    .nav-links { display: flex; justify-content: center; gap: clamp(22px, 3vw, 52px); }
+    .nav-links a { text-decoration: none; font-weight: 600; font-size: .95rem; }
+    .nav-actions { display: flex; gap: 14px; align-items: center; }
+    .nav-actions .btn { min-height: 50px; padding: 12px 25px; }
+    .mobile-menu { display: none; }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - var(--nav-h));
+      display: grid;
+      align-items: end;
+      color: #fff;
+      background: var(--brown);
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(20, 25, 24, .84) 0%, rgba(38, 30, 24, .55) 46%, rgba(23, 63, 82, .1) 82%);
+      pointer-events: none;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 52% center;
+      transform: scale(1.015);
+    }
+    .media-placeholder::before {
+      content: "CLIENT ENVIRONMENTAL PHOTO SLOT";
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      padding: 7px 11px;
+      border: 1px solid currentColor;
+      border-radius: 3px;
+      color: rgba(255,255,255,.92);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      z-index: 2;
+    }
+    .hero-content { position: relative; z-index: 2; padding-block: clamp(90px, 12vw, 190px) 64px; }
+    .hero h1 { margin-bottom: 36px; }
+    .hero .btn-primary { background: var(--rust); }
+    .hero .btn-secondary { background: var(--ink); border-color: #fff; }
+    .hero-note { margin: 42px 0 0; max-width: 590px; font-size: 1.05rem; color: rgba(255,255,255,.86); }
+
+    .audience-strip { padding: 34px 0 40px; background: var(--paper); border-bottom: 1px solid var(--line); }
+    .audience-grid { display: grid; grid-template-columns: .8fr repeat(3, 1fr); gap: 24px; align-items: end; }
+    .audience-item { position: relative; padding-top: 20px; font-weight: 700; text-align: center; transition: color .28s ease, transform .28s ease; }
+    .audience-item::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--blue); transform: scaleX(.34); transform-origin: center; transition: transform .38s cubic-bezier(.2,.75,.25,1), background .28s ease; }
+    .audience-item:hover, .audience-item:focus-visible { color: var(--rust); transform: translateY(-4px); }
+    .audience-item:hover::before, .audience-item:focus-visible::before { background: var(--rust); transform: scaleX(1); }
+
+    .intro-card {
+      position: relative;
+      max-width: 1030px;
+      margin-inline: auto;
+      padding: clamp(48px, 6vw, 78px);
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.32);
+    }
+    .desert-rule { position: absolute; left: calc(50% - 42px); top: -2px; width: 84px; height: 4px; background: var(--rust); }
+    .desert-mark { width: 46px; height: 73px; object-fit: contain; }
+    .intro-card h3 { margin-bottom: 24px; }
+    .intro-card p { max-width: 800px; margin-inline: auto; }
+
+    .signature { padding: clamp(86px, 8vw, 125px) 0; background: var(--paper); }
+    .signature-head { text-align: center; margin-bottom: 70px; }
+    .signature-head h2 { max-width: 1000px; margin-inline: auto; }
+    .sequence { display: grid; gap: 0; }
+    .sequence-row { position: relative; min-height: 150px; display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 24px; overflow: hidden; }
+    .sequence-row::after { content: ""; position: absolute; bottom: 0; left: 0; height: 5px; width: 100%; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .48s cubic-bezier(.2,.75,.25,1); }
+    .sequence-row:hover::after, .sequence-row:focus-visible::after { transform: scaleX(1); }
+    .sequence-number { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: 1.15rem; font-weight: 600; letter-spacing: .04em; }
+    .sequence-phrase { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: clamp(2.6rem, 5.8vw, 6.8rem); line-height: .95; font-weight: 500; letter-spacing: -.045em; transition: transform .48s cubic-bezier(.2,.75,.25,1); }
+    .sequence-row:hover .sequence-phrase, .sequence-row:focus-visible .sequence-phrase { transform: translateY(-8px); }
+
+    .split-chapter { background: #ecece8; }
+    .center-title { text-align: center; margin: 0 auto 65px; max-width: 980px; }
+    .center-title p { max-width: 850px; margin-inline: auto; }
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: stretch; }
+    .accordion { display: grid; gap: 12px; align-content: start; }
+    details { background: #fff; border-radius: 16px; overflow: hidden; }
+    summary { list-style: none; cursor: pointer; padding: 26px 28px; display: grid; grid-template-columns: 38px 1fr; gap: 14px; align-items: center; font-weight: 750; font-size: 1.12rem; }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { content: "+"; width: 34px; height: 34px; border: 1px solid var(--rust); border-radius: 2px; display: grid; place-items: center; background: transparent; color: var(--rust); }
+    details[open] summary::before { content: "−"; }
+    .planning-steps details { border: 1px solid transparent; transition: background .24s ease, color .24s ease, transform .24s ease, border-color .24s ease; }
+    .planning-steps details:hover, .planning-steps details:focus-within { transform: translateX(7px); border-color: rgba(120,50,21,.28); }
+    .planning-steps details[open] { color: #fff; background: var(--ink); }
+    .planning-steps details[open] summary::before { color: #fff; border-color: rgba(255,255,255,.65); }
+    .details-copy { padding: 0 36px 34px 80px; }
+    .details-copy h3 { font-size: clamp(1.7rem, 2.6vw, 2.5rem); }
+    .service-line { margin-bottom: 18px; font-weight: 700; }
+    .planning-stage {
+      position: relative;
+      min-height: 630px;
+      border-radius: 18px;
+      overflow: hidden;
+      color: #fff;
+      background: var(--ink);
+    }
+    .planning-images { position: absolute; inset: 0; z-index: 0; }
+    .planning-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.07); transition: opacity .5s ease, transform 1s cubic-bezier(.2,.75,.25,1); }
+    .planning-image.is-active { opacity: 1; transform: scale(1); }
+    .planning-image[data-image-index="1"] { object-position: 58% center; }
+    .planning-image[data-image-index="2"] { object-position: 46% center; }
+    .planning-stage::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(23,63,82,.08), rgba(23,63,82,.82) 70%, rgba(83,30,14,.92)); pointer-events: none; }
+    .planning-stage::after { content: "PHOENIX · SONORAN DESERT"; position: absolute; top: 24px; right: 26px; z-index: 3; font-size: .72rem; font-weight: 750; letter-spacing: .1em; }
+    .planning-panel { position: absolute; left: clamp(28px,4vw,58px); right: clamp(28px,4vw,58px); bottom: clamp(32px,5vw,64px); z-index: 2; max-width: 540px; }
+    .planning-panel.is-updated { animation: copy-rise .46s cubic-bezier(.2,.75,.25,1); }
+    .planning-panel h3 { margin-bottom: 18px; font-size: clamp(2rem,3.2vw,3.6rem); }
+    .planning-panel p { margin: 0; max-width: 490px; color: rgba(255,255,255,.9); }
+    .chapter-actions { display: flex; justify-content: center; gap: 16px; margin-top: 54px; }
+
+    @keyframes copy-rise { from { opacity: .25; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    .bridge { padding: 110px 0; text-align: center; }
+    .bridge .desert-mark { margin: 0 auto 36px; }
+    .bridge h3 { max-width: 840px; margin-inline: auto; }
+
+    .nate { padding: 82px 0; }
+    .nate-header { margin-bottom: 54px; }
+    .profile-card { display: grid; grid-template-columns: .92fr 1.08fr; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; }
+    .portrait-photo { position: relative; min-height: 585px; margin: 0; overflow: hidden; background: var(--blue-light); }
+    .portrait-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 36%; }
+    .profile-copy { padding: clamp(34px, 4vw, 56px); font-size: .95rem; }
+    .profile-copy h3 { color: var(--blue); }
+    .profile-copy .story-lead { font-size: inherit; line-height: inherit; color: inherit; }
+    .credentials { margin-top: 36px; padding-top: 30px; border-top: 1px solid var(--line); font-weight: 650; }
+    .compliance-note { margin-top: 24px; padding: 18px 20px; background: rgba(193,102,48,.1); border-left: 4px solid var(--orange); font-size: .86rem; }
+
+    .moments { overflow-x: clip; }
+    .moments-head { text-align: center; max-width: 1020px; margin: 0 auto 54px; }
+    .moments-rail { width: min(calc(100% - 64px), var(--max)); margin: 0 auto; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+    .moment-card, .service-card { position: relative; height: 330px; min-width: 0; padding: 0; overflow: visible; color: #fff; background-color: var(--ink); border: 1px solid rgba(255,255,255,.18); border-radius: 5px; transition: transform .2s ease, box-shadow .2s ease; }
+    .moment-card { overflow: hidden; }
+    .moment-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,63,82,.18), rgba(23,63,82,.78)), url("assets/phoenix-desert-detail.jpg") center / cover no-repeat; opacity: 0; transform: scale(1.06); transition: opacity .32s ease, transform .48s cubic-bezier(.2,.75,.25,1); }
+    .moment-card:nth-child(even) { background-color: var(--rust); }
+    .moment-card:nth-child(even)::before { background-image: linear-gradient(180deg, rgba(120,50,21,.12), rgba(83,30,14,.72)), url("assets/phoenix-desert-detail.jpg"); }
+    .moment-card:nth-child(2)::before { background-position: 20% center; }
+    .moment-card:nth-child(3)::before { background-position: 35% center; }
+    .moment-card:nth-child(4)::before { background-position: 50% center; }
+    .moment-card:nth-child(5)::before { background-position: 65% center; }
+    .moment-card:nth-child(6)::before { background-position: 80% center; }
+    .moment-card:nth-child(7)::before { background-position: 100% center; }
+    .moment-card > summary, .service-card > summary { position: relative; z-index: 1; height: 100%; padding: 24px 20px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 18px; color: inherit; }
+    .moment-card > summary::before, .service-card > summary::before { display: none; }
+    .moment-card .num { font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,.55); }
+    .moment-card h4, .service-card h4 { font-size: 1.38rem; margin: 0; }
+    .expand-indicator { font-size: 1.45rem; line-height: 1; }
+    .expand-copy { position: absolute; z-index: 2; inset: 0; padding: 24px 20px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(180deg, rgba(120,50,21,.08), rgba(83,30,14,.82)); color: #fff; opacity: 0; pointer-events: none; transform: scale(.96); transition: opacity .18s ease, transform .18s ease; }
+    .expand-copy h4 { margin-bottom: 18px; }
+    .expand-copy p { margin: 0; font-size: .92rem; line-height: 1.45; }
+    .moment-card:hover, .moment-card:focus-within, .service-card:hover, .service-card:focus-within { z-index: 3; transform: scale(1.045); box-shadow: 0 20px 50px rgba(23,63,82,.2); }
+    .moment-card:hover::before, .moment-card:focus-within::before, .moment-card[open]::before { opacity: 1; transform: scale(1); }
+    .moment-card:hover .expand-copy, .moment-card:focus-within .expand-copy, .moment-card[open] .expand-copy, .service-card:hover .expand-copy, .service-card:focus-within .expand-copy, .service-card[open] .expand-copy { opacity: 1; transform: scale(1); }
+
+    .legacy { padding: 82px 0; }
+    .legacy h2 { text-align: center; margin-bottom: 58px; }
+    .legacy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .legacy-card { overflow: hidden; display: grid; grid-template-columns: .78fr 1.22fr; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    .legacy-media { min-height: 390px; position: relative; margin: 0; overflow: hidden; background: #8799a3; }
+    .legacy-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.75,.25,1); }
+    .legacy-card:first-child .legacy-media img { filter: grayscale(1); }
+    .legacy-card:hover .legacy-media img { transform: scale(1.045); }
+    .legacy-copy { padding: 32px 30px; align-self: center; font-size: .94rem; }
+    .legacy-copy h3 { color: var(--blue); }
+
+    .services { padding-bottom: 80px; }
+    .services-layout { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: start; }
+    .services-layout h3 { position: sticky; top: 130px; }
+    .service-rail { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .service-card { height: 240px; }
+    .service-card .expand-copy { background: var(--blue); }
+
+    .closing { padding: 120px 0; text-align: center; border-top: 1px solid var(--line); }
+    .closing h2 { max-width: 1000px; margin: 0 auto 28px; }
+    .closing p { max-width: 760px; margin: 0 auto 35px; }
+    .closing .button-row { justify-content: center; }
+    .closing .btn[data-pending]::after { content: " · destination pending"; font-size: .72em; opacity: .78; }
+    .quiz-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; margin-top: 24px; }
+    .quiz-links a { font-weight: 750; text-underline-offset: 5px; }
+    .quiz-links a::after { content: " — link pending"; font-size: .74em; color: var(--rust); }
+
+    footer { background: var(--blue); color: #fff; padding: 70px 0 34px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 55px; }
+    .footer-title { margin-bottom: 18px; font-weight: 800; }
+    footer a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .footer-links { display: grid; gap: 12px; }
+    .footer-bottom { margin-top: 60px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.38); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; font-size: .76rem; line-height: 1.6; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+
+    @media (max-width: 980px) {
+      :root { --nav-h: 78px; }
+      .container { width: min(calc(100% - 40px), var(--max)); }
+      .nav { grid-template-columns: 1fr auto; }
+      .nav-links, .nav-actions { display: none; }
+      .mobile-menu { display: block; }
+      .mobile-menu summary { padding: 10px 0; display: block; background: transparent; }
+      .mobile-menu summary::before { display: none; }
+      .mobile-panel { position: absolute; left: 0; right: 0; top: 100%; display: grid; padding: 24px; gap: 18px; background: var(--paper); box-shadow: 0 18px 30px rgba(23,63,82,.14); }
+      .audience-grid { grid-template-columns: 1fr; }
+      .audience-grid .eyebrow { text-align: center; }
+      .split-grid, .nate-header, .profile-card, .legacy-grid, .services-layout { grid-template-columns: 1fr; }
+      .profile-card { display: grid; }
+      .portrait-photo { min-height: 470px; }
+      .legacy-card { grid-template-columns: 1fr; }
+      .legacy-media { min-height: 320px; }
+      .services-layout h3 { position: static; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    @media (max-width: 620px) {
+      body { font-size: 16px; }
+      .container { width: min(calc(100% - 32px), var(--max)); }
+      .section { padding: 76px 0; }
+      .hero { min-height: 760px; }
+      .hero-content { padding: 120px 0 54px; }
+      .hero-media { object-position: 55% center; }
+      .hero h1 { margin-bottom: 28px; }
+      .button-row { display: grid; }
+      .btn { width: 100%; }
+      .hero-note { margin-top: 28px; }
+      .intro-card { padding: 52px 24px 38px; }
+      .sequence-row { min-height: 150px; grid-template-columns: 42px 1fr; gap: 10px; }
+      .sequence-phrase { font-size: clamp(2.2rem, 12vw, 3.5rem); }
+      .center-title { margin-bottom: 38px; }
+      summary { padding: 22px 20px; }
+      .details-copy { padding: 0 22px 26px; }
+      .planning-stage { min-height: 440px; }
+      .chapter-actions { display: grid; }
+      .nate-header { gap: 18px; }
+      .profile-copy { padding: 32px 24px; }
+      .portrait-photo { min-height: 430px; }
+      .portrait-photo img { object-position: 50% 30%; }
+      .moments-rail, .service-rail { width: calc(100% - 32px); grid-template-columns: 1fr; gap: 8px; }
+      .moment-card, .service-card { height: 88px; }
+      .moment-card { transition: height .28s cubic-bezier(.2,.75,.25,1); }
+      .moment-card[open] { height: 164px; }
+      .moment-card > summary, .service-card > summary { padding: 17px 18px; flex-direction: row; align-items: center; }
+      .moment-card[open] > summary { opacity: 0; }
+      .moment-card .num { min-width: 28px; }
+      .moment-card h4, .service-card h4 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.08rem; font-weight: 600; letter-spacing: 0; }
+      .expand-copy { padding: 15px 18px; justify-content: center; }
+      .expand-copy h4 { display: none; }
+      .moment-card[open] .expand-copy h4 { display: block; margin: 0 0 8px; }
+      .expand-copy p { font-size: .86rem; }
+      .moment-card:hover, .moment-card:focus-within, .service-card:hover, .service-card:focus-within { transform: none; box-shadow: none; }
+      .legacy-copy { padding: 30px 24px; }
+      .closing .button-row, .quiz-links { display: grid; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      footer { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Kinghart Private Wealth home">
+        <img class="brand-mark" src="assets/kinghart-cactus.png" alt="">
+        <span>Kinghart<small>Private Wealth</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#who">Who we serve</a>
+        <a href="#what">What we do</a>
+        <a href="#approach">Our approach</a>
+        <a href="#nate">Meet Nate</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#contact">Readiness quiz</a>
+        <a class="btn btn-secondary" href="#contact">Start a conversation</a>
+      </div>
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav class="mobile-panel" aria-label="Mobile navigation">
+          <a href="#who">Who we serve</a>
+          <a href="#what">What we do</a>
+          <a href="#approach">Our approach</a>
+          <a href="#nate">Meet Nate</a>
+          <a class="btn btn-secondary" href="#contact">Start a conversation</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="assets/phoenix-desert-poster.jpg" aria-label="Phoenix-area Sonoran desert landscape in motion">
+        <source src="assets/phoenix-desert-loop.mp4" type="video/mp4">
+      </video>
+      <div class="container hero-content">
+        <h1 id="hero-title">Your financial life shouldn’t become your second job.</h1>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#contact">Schedule an Introductory Conversation</a>
+          <a class="btn btn-secondary" href="#contact">Take the Readiness Quiz</a>
+        </div>
+        <p class="hero-note">Kinghart Private Wealth (Kinghart) helps successful professionals, business owners, and families organize the moving pieces of their financial lives, understand what matters most, and turn thoughtful planning into action.</p>
+      </div>
+    </section>
+
+    <section class="audience-strip" aria-label="Primary audiences">
+      <div class="container audience-grid">
+        <div class="eyebrow muted">Primarily serving</div>
+        <div class="audience-item" tabindex="0">Executives &amp; high-income professionals</div>
+        <div class="audience-item" tabindex="0">Business owners</div>
+        <div class="audience-item" tabindex="0">Successful families</div>
+      </div>
+    </section>
+
+    <section class="section" id="who">
+      <div class="container">
+        <div class="intro-card">
+          <span class="desert-rule" aria-hidden="true"></span>
+          <h3>You’ve built something meaningful. Now there’s more to manage.</h3>
+          <p>Kinghart works with successful people who have generally done a lot right. They’ve saved, invested, built businesses and careers, worked with CPAs and attorneys, created spreadsheets, and accumulated meaningful wealth.</p>
+          <p>The challenge isn’t necessarily knowing <em>what</em> financial strategies exist. It’s knowing which ones matter for <strong>your</strong> situation, how they interact, what should happen first, and making sure the right things actually get done.</p>
+          <a class="btn btn-primary" href="#contact">Schedule an Introductory Conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split-chapter" id="what">
+      <div class="container">
+        <div class="center-title">
+          <h2>The portfolio is one piece of the puzzle.</h2>
+          <p>Investment decisions matter. But as wealth grows, some of the decisions with the greatest impact happen outside the portfolio.</p>
+          <p>Kinghart sits at the center of your financial life—helping organize the pieces, identify priorities, coordinate with the right professionals, and keep decisions moving forward.</p>
+        </div>
+        <div class="split-grid">
+          <div class="accordion planning-steps">
+            <details open data-image-index="0" data-image-label="Phoenix city and mountain panorama at sunset" data-title="One financial life. All of the moving pieces." data-copy="Investments, taxes, estate planning, insurance, business interests, real estate, equity compensation, retirement—and the people already advising you.">
+              <summary>Organize the whole picture.</summary>
+            </details>
+            <details data-image-index="1" data-image-label="Barrel cactus isolated among Sonoran rock" data-title="Distinguish what’s important from what’s simply available." data-copy="More information doesn’t necessarily create better decisions. Kinghart helps evaluate the trade-offs between risk, opportunity, and what you’re actually trying to accomplish.">
+              <summary>Identify what matters most.</summary>
+            </details>
+            <details data-image-index="2" data-image-label="A winding road through Arizona’s Sonoran Desert" data-title="Focus on the few priorities most likely to matter." data-copy="Rather than treating every opportunity as equally important, Nate helps identify the few priorities most likely to meaningfully affect your financial life.">
+              <summary>Put things in the right order.</summary>
+            </details>
+            <details data-image-index="3" data-image-label="Ordered architectural forms reflecting the Phoenix sky" data-title="Turn strategy into action." data-copy="A strategy isn’t useful sitting on a shelf. Kinghart helps coordinate the people and moving pieces involved so decisions turn into action.">
+              <summary>Coordinate and execute.</summary>
+            </details>
+            <details data-image-index="4" data-image-label="Sonoran landscape beneath changing twilight" data-title="Keep the plan aligned with the life." data-copy="Because the right answer today may not be the right answer five years from now.">
+              <summary>Revisit as life changes.</summary>
+            </details>
+          </div>
+          <div class="planning-stage" role="img" aria-label="Phoenix city and mountain panorama at sunset">
+            <div class="planning-images" aria-hidden="true">
+              <img class="planning-image is-active" data-image-index="0" src="assets/planning-whole.jpg" alt="" width="1800" height="1013">
+              <img class="planning-image" data-image-index="1" src="assets/planning-focus.jpg" alt="" width="1800" height="1200">
+              <img class="planning-image" data-image-index="2" src="assets/planning-order.jpg" alt="" width="1800" height="1200">
+              <img class="planning-image" data-image-index="3" src="assets/planning-coordinate.jpg" alt="" width="1800" height="1200">
+              <img class="planning-image" data-image-index="4" src="assets/planning-revisit.jpg" alt="" width="1800" height="1201">
+            </div>
+            <div class="planning-panel is-updated" aria-live="polite">
+              <h3>One financial life. All of the moving pieces.</h3>
+              <p>Investments, taxes, estate planning, insurance, business interests, real estate, equity compensation, retirement—and the people already advising you.</p>
+            </div>
+          </div>
+        </div>
+        <div class="chapter-actions">
+          <a class="btn btn-primary" href="#contact">Schedule an Introductory Conversation</a>
+          <a class="btn btn-secondary" href="#services">What We Do</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bridge">
+      <div class="container">
+        <img class="desert-mark" src="assets/kinghart-cactus.png" alt="">
+        <h3>A financial plan is only as valuable as its execution.</h3>
+        <p>You may not need another 45-page document telling you everything looks fine. You may need someone who can identify the three or four priorities that could have the greatest impact, put them in the right order, and help make sure they actually happen.</p>
+        <a class="btn btn-secondary" href="#contact">Schedule an Introductory Conversation</a>
+      </div>
+    </section>
+
+    <section class="signature" id="approach" aria-labelledby="signature-title">
+      <div class="container signature-head">
+        <h2 id="signature-title">See the whole picture. Prioritize what matters. Make it happen.</h2>
+      </div>
+      <div class="container sequence" aria-label="The Kinghart approach">
+        <div class="sequence-row" tabindex="0" style="--progress:34%">
+          <span class="sequence-number">01</span><span class="sequence-phrase">whole picture.</span>
+        </div>
+        <div class="sequence-row" tabindex="0" style="--progress:68%">
+          <span class="sequence-number">02</span><span class="sequence-phrase">right priorities.</span>
+        </div>
+        <div class="sequence-row" tabindex="0" style="--progress:100%">
+          <span class="sequence-number">03</span><span class="sequence-phrase">real action.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section nate" id="nate">
+      <div class="container">
+        <div class="nate-header">
+          <h2>Meet Nate Neill</h2>
+        </div>
+        <article class="profile-card">
+          <figure class="portrait-photo">
+            <img src="assets/nate-neill.jpeg" alt="Portrait of Nate Neill" width="1000" height="1000">
+          </figure>
+          <div class="profile-copy">
+            <h3>Good wealth management is about far more than investment performance.</h3>
+            <p class="story-lead">Nate’s interest in investing began when he was young, but his reason for making it a career became much more personal during the financial crisis.</p>
+            <p>He watched his father come close to losing everything and saw firsthand how different the outcome might have been with the right financial guidance. That experience shaped his belief that good wealth management is about far more than investment performance—it’s about helping people make thoughtful decisions across their entire financial lives.</p>
+            <p>Nate began his financial career as a bank teller at Wells Fargo, where a manager recognized both his aptitude for finance and the genuine care he brought to his relationships with customers. That mentorship introduced him to financial planning and ultimately set the direction for his career. He later joined Charles Schwab, where his experience grew to include helping spearhead a new department.</p>
+            <p>Over time, Nate became increasingly convinced that clients needed someone who could look beyond individual accounts or strategies and understand how the entire financial picture fit together. That philosophy ultimately led him to establish <strong>Kinghart Private Wealth in 2026</strong>.</p>
+            <p class="credentials">Nate holds the <strong>Series 7, 63, and 65 registrations</strong>, maintains <strong>Life &amp; Health insurance licensing</strong>, and is a <strong>Certified Exit Planning Advisor (CEPA)</strong>.</p>
+            <p>His practice operates through Axiom Wealth Alliance and its affiliated investment advisory and broker-dealer structure.</p>
+            <div class="compliance-note"><strong>Compliance review required:</strong> [Compliance should review/replace this sentence with the required approved language.]</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section moments" id="moments" aria-labelledby="moments-title">
+      <div class="container moments-head">
+        <h2 id="moments-title">Navigating increasing financial complexity or an important transition.</h2>
+        <p>Kinghart primarily serves <strong>executives and high-income professionals, business owners, and successful families</strong>, particularly those navigating increasing financial complexity or an important transition.</p>
+      </div>
+      <div class="moments-rail" aria-label="Life transitions Kinghart helps navigate">
+        <details class="moment-card"><summary><span class="num">01</span><h4>Retirement</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Retirement</h4><p>Because the right answer today may not be the right answer five years from now.</p></div></details>
+        <details class="moment-card"><summary><span class="num">02</span><h4>Business sale</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Business sale</h4><p>Put things in the right order.</p></div></details>
+        <details class="moment-card"><summary><span class="num">03</span><h4>Career change</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Career change</h4><p>Revisit as life changes.</p></div></details>
+        <details class="moment-card"><summary><span class="num">04</span><h4>Concentrated stock</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Concentrated stock</h4><p>Evaluate the trade-offs between risk and opportunity.</p></div></details>
+        <details class="moment-card"><summary><span class="num">05</span><h4>Inheritance</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Inheritance</h4><p>Identify what matters most.</p></div></details>
+        <details class="moment-card"><summary><span class="num">06</span><h4>Relocation</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Relocation</h4><p>Coordinate the people and moving pieces involved.</p></div></details>
+        <details class="moment-card"><summary><span class="num">07</span><h4>College expenses</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>College expenses</h4><p>Distinguish what’s important from what’s simply available.</p></div></details>
+      </div>
+      <div class="container" style="margin-top:42px;max-width:980px;text-align:center">
+        <p>That transition might be retirement, a business sale, a career change, concentrated stock, an inheritance, relocation, college expenses, or simply reaching the point where managing everything well is taking more time and attention than you want to give it.</p>
+      </div>
+    </section>
+
+    <section class="section legacy" id="legacy" aria-labelledby="legacy-title">
+      <div class="container">
+        <h2 id="legacy-title">A name built on legacy.</h2>
+        <div class="legacy-grid">
+          <article class="legacy-card">
+            <figure class="legacy-media"><img src="assets/legacy-grandfathers.jpg" alt="Two older men in conversation, symbolizing the grandfathers behind the Kinghart name" width="1063" height="1600"></figure>
+            <div class="legacy-copy">
+              <h3>Kinghart</h3>
+              <p>Kinghart combines the middle names of Nate’s paternal and maternal grandfathers—a tribute to two men whose lives and legacies helped shape his own.</p>
+              <p>Watching what previous generations built, protected, and passed down helped form Nate’s understanding of wealth as something bigger than a number on a statement. It can create security, opportunity, experiences, and a lasting impact on the people and causes that matter.</p>
+            </div>
+          </article>
+          <article class="legacy-card">
+            <figure class="legacy-media"><img src="assets/legacy-hands.jpg" alt="Adult and infant hands representing continuity between generations" width="1200" height="1500"></figure>
+            <div class="legacy-copy">
+              <h3>What wealth supports</h3>
+              <p>Today, their names serve as a reminder of why Kinghart exists: <strong>to help families be intentional about what they build today and what they leave behind tomorrow.</strong></p>
+              <p>Nate married his wife, Mary, in 2014, and together they are raising their three daughters, Renny and twins Piper and Blaire. Becoming a husband and father has made the idea of legacy even more personal—and reinforced his belief that the purpose of wealth is ultimately tied to the life and people it supports.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="container services-layout">
+        <div>
+          <div class="eyebrow muted">What we coordinate</div>
+          <h3 id="services-title">The portfolio is one piece of the puzzle.</h3>
+        </div>
+        <div class="service-rail" aria-label="Kinghart services">
+          <details class="service-card"><summary><h4>Financial Planning</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Financial Planning</h4><p>Organize the whole picture.</p></div></details>
+          <details class="service-card"><summary><h4>Investment Management</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Investment Management</h4><p>The portfolio is one piece of the puzzle.</p></div></details>
+          <details class="service-card"><summary><h4>Tax Planning &amp; Coordination</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Tax Planning &amp; Coordination</h4><p>Coordinate with the right professionals.</p></div></details>
+          <details class="service-card"><summary><h4>Estate &amp; Legacy Planning</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Estate &amp; Legacy Planning</h4><p>What you leave behind tomorrow.</p></div></details>
+          <details class="service-card"><summary><h4>Insurance &amp; Risk Management</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Insurance &amp; Risk Management</h4><p>Risk, opportunity, and what you’re actually trying to accomplish.</p></div></details>
+          <details class="service-card"><summary><h4>Business &amp; Exit Planning</h4><span class="expand-indicator">+</span></summary><div class="expand-copy"><h4>Business &amp; Exit Planning</h4><p>Turn thoughtful planning into action.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="contact">
+      <div class="container">
+        <h2>You don’t have to know what you don’t know.</h2>
+        <p>If you’ve built a strong financial foundation but wonder whether there are opportunities, risks, or connections you’re missing, that’s a good place to start.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" data-pending href="#asset-gaps">Schedule an Introductory Conversation</a>
+        </div>
+        <div class="quiz-links" id="quiz-destinations">
+          <a href="#asset-gaps">Take the Retirement Readiness Quiz</a>
+          <a href="#asset-gaps">Take the Business Readiness Quiz</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#top" style="color:#fff"><img class="brand-mark" src="assets/kinghart-cactus.png" alt=""><span>Kinghart<small style="color:#fff">Private Wealth</small></span></a>
+          <p style="margin-top:22px;max-width:430px">Helping successful professionals, business owners, and families turn thoughtful planning into action.</p>
+        </div>
+        <div><div class="footer-title">Explore</div><div class="footer-links"><a href="#who">Who we serve</a><a href="#what">What we do</a><a href="#approach">Our approach</a></div></div>
+        <div><div class="footer-title">About</div><div class="footer-links"><a href="#nate">Meet Nate</a><a href="#services">Services</a><a href="#contact">Start a conversation</a></div></div>
+        <div><div class="footer-title">Readiness</div><div class="footer-links"><a href="#contact">Retirement Readiness Quiz</a><a href="#contact">Business Readiness Quiz</a></div></div>
+      </div>
+      <div class="footer-bottom" id="asset-gaps">
+        <div><strong>Compliance language pending.</strong><br>The supplied copy states that the practice operates through Axiom Wealth Alliance and its affiliated investment advisory and broker-dealer structure. Final approved disclosure language, legal links, address, contact details, and CTA destinations were not supplied.</div>
+        <div>Kinghart Private Wealth was established in 2026. Nate Neill holds the Series 7, 63, and 65 registrations, maintains Life &amp; Health insurance licensing, and is a Certified Exit Planning Advisor (CEPA).</div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const steps = [...document.querySelectorAll('.planning-steps details')];
+      const panel = document.querySelector('.planning-panel');
+      const panelTitle = panel?.querySelector('h3');
+      const panelCopy = panel?.querySelector('p');
+      const planningStage = document.querySelector('.planning-stage');
+      const planningImages = [...document.querySelectorAll('.planning-image')];
+
+      function activateStep(step) {
+        steps.forEach((item) => { item.open = item === step; });
+        if (!panel || !panelTitle || !panelCopy) return;
+        panel.classList.remove('is-updated');
+        panelTitle.textContent = step.dataset.title || '';
+        panelCopy.textContent = step.dataset.copy || '';
+        const activeImageIndex = step.dataset.imageIndex || '0';
+        planningImages.forEach((image) => {
+          image.classList.toggle('is-active', image.dataset.imageIndex === activeImageIndex);
+        });
+        planningStage?.setAttribute('aria-label', step.dataset.imageLabel || 'Phoenix-area Sonoran desert');
+        void panel.offsetWidth;
+        panel.classList.add('is-updated');
+      }
+
+      steps.forEach((step) => {
+        step.addEventListener('pointerenter', () => activateStep(step));
+        step.addEventListener('focusin', () => activateStep(step));
+        step.querySelector('summary')?.addEventListener('click', (event) => {
+          event.preventDefault();
+          activateStep(step);
+        });
+      });
+
+      const heroVideo = document.querySelector('.hero-media');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      function syncVideoMotion() {
+        if (!(heroVideo instanceof HTMLVideoElement)) return;
+        if (reducedMotion.matches) heroVideo.pause();
+        else heroVideo.play().catch(() => {});
+      }
+      syncVideoMotion();
+      reducedMotion.addEventListener?.('change', syncVideoMotion);
+    })();
+  </script>
+</body>
+</html>
