@@ -419,11 +419,21 @@
     <section class="section" id="who">
       <div class="container">
         <div class="intro-card">
-          <span class="desert-rule" aria-hidden="true"></span>
-          <h3>You’ve built something meaningful. Now there’s more to manage.</h3>
-          <p>Kinghart works with successful people who have generally done a lot right. They’ve saved, invested, built businesses and careers, worked with CPAs and attorneys, created spreadsheets, and accumulated meaningful wealth.</p>
-          <p>The challenge isn’t necessarily knowing <em>what</em> financial strategies exist. It’s knowing which ones matter for <strong>your</strong> situation, how they interact, what should happen first, and making sure the right things actually get done.</p>
-          <a class="btn btn-primary" href="#contact">Schedule an Introductory Conversation</a>
+          <div class="why-heading">
+            <div class="chapter-label">01 / The why</div>
+            <h3>You’ve built something meaningful. Now there’s more to manage.</h3>
+          </div>
+          <div class="why-copy">
+            <p>Kinghart works with successful people who have generally done a lot right. They’ve saved, invested, built businesses and careers, worked with CPAs and attorneys, created spreadsheets, and accumulated meaningful wealth.</p>
+            <p>The challenge isn’t necessarily knowing <em>what</em> financial strategies exist. It’s knowing which ones matter for <strong>your</strong> situation, how they interact, what should happen first, and making sure the right things actually get done.</p>
+            <a class="btn btn-primary" href="#contact">Schedule an Introductory Conversation</a>
+          </div>
+          <div class="why-flow" aria-label="Kinghart moves decisions from available strategies to coordinated action">
+            <div class="why-flow-step"><span>01</span><strong>What exists</strong></div>
+            <div class="why-flow-step"><span>02</span><strong>What matters</strong></div>
+            <div class="why-flow-step"><span>03</span><strong>What comes first</strong></div>
+            <div class="why-flow-step"><span>04</span><strong>What gets done</strong></div>
+          </div>
         </div>
       </div>
     </section>
@@ -636,6 +646,22 @@
           activateStep(step);
         });
       });
+
+      const whyFlow = document.querySelector('.why-flow');
+      if (whyFlow) {
+        const revealWhyFlow = () => whyFlow.classList.add('is-visible');
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              revealWhyFlow();
+              observer.disconnect();
+            }
+          }, { threshold: 0.35 });
+          observer.observe(whyFlow);
+        } else {
+          revealWhyFlow();
+        }
+      }
     })();
   </script>
 </body>
