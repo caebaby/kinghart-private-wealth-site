@@ -36,7 +36,7 @@ Avoid pure white and pure black. Use tinted alpha values derived from the offici
 
 ## Imagery
 
-- Hero: cinematic, believable private office architecture with a calm mountain and tree-line outlook
+- Hero: cinematic, believable private office architecture with a restrained Phoenix desert and foothill outlook
 - Nate: current professional headshot until the replacement arrives
 - Legacy: the supplied Neill family portrait as the primary emotional image
 - Grandfather story: restrained black-and-white generational image
