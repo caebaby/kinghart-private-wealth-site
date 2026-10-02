@@ -335,6 +335,19 @@ p { max-width: 72ch; }
 .sequence-row::after { height: 1px; background: var(--gold); }
 .sequence-number { border-color: rgba(245, 241, 232, .3); color: var(--gold); font-family: "Avenir Next", Avenir, sans-serif; font-size: .78rem; letter-spacing: .12em; }
 .sequence-phrase { color: var(--ivory); font-family: "Avenir Next", Avenir, sans-serif; font-size: clamp(2.6rem, 6vw, 7.4rem); font-weight: 400; letter-spacing: -.055em; }
+.signature.motion-ready .signature-head,
+.signature.motion-ready .sequence-row {
+  transition: transform .78s var(--ease);
+}
+.signature.motion-ready .signature-head { transform: translateY(34px); }
+.signature.motion-ready .sequence-row { transform: translateX(48px); }
+.signature.motion-ready.is-visible .signature-head,
+.signature.motion-ready.is-visible .sequence-row { transform: translate(0); }
+.signature.motion-ready.is-visible .sequence-row:nth-child(1) { transition-delay: .11s; }
+.signature.motion-ready.is-visible .sequence-row:nth-child(2) { transition-delay: .22s; }
+.signature.motion-ready.is-visible .sequence-row:nth-child(3) { transition-delay: .33s; }
+.signature .sequence-row:hover .sequence-phrase,
+.signature .sequence-row:focus-visible .sequence-phrase { transform: translate(14px, -4px); }
 
 .nate { padding: clamp(100px, 11vw, 170px) 0; background: var(--ivory); }
 .nate-header { display: grid; margin-bottom: 54px; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
@@ -484,4 +497,6 @@ footer .brand-logo { width: 100%; }
   .hero-media { animation: none; }
   .why-flow::before { transform: scaleX(1); }
   .why-flow-step { opacity: 1; transform: none; }
+  .signature.motion-ready .signature-head,
+  .signature.motion-ready .sequence-row { transform: none; transition: none; }
 }

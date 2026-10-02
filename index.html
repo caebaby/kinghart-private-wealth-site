@@ -662,6 +662,24 @@
           revealWhyFlow();
         }
       }
+
+      const signature = document.querySelector('.signature');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (signature && !reduceMotion) {
+        signature.classList.add('motion-ready');
+        const revealSignature = () => signature.classList.add('is-visible');
+        if ('IntersectionObserver' in window) {
+          const signatureObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              revealSignature();
+              signatureObserver.disconnect();
+            }
+          }, { threshold: 0.18 });
+          signatureObserver.observe(signature);
+        } else {
+          revealSignature();
+        }
+      }
     })();
   </script>
 </body>
