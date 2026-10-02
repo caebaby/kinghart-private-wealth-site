@@ -326,14 +326,14 @@ p { max-width: 72ch; }
 .bridge .btn-secondary { color: var(--navy); border-color: rgba(20, 42, 67, .55); }
 .bridge .btn-secondary:hover { color: var(--ivory); background: var(--navy); }
 
-.signature { padding: clamp(100px, 12vw, 190px) 0; color: var(--ivory); background: var(--reserve); border: 0; }
+.signature { padding: clamp(100px, 12vw, 190px) 0; color: var(--ivory); background: var(--navy); border: 0; }
 .signature-head { margin-bottom: clamp(60px, 8vw, 112px); text-align: left; }
 .signature-head::before { content: "03 / THE PROMISE"; display: block; margin-bottom: 36px; color: var(--gold); font-size: .72rem; font-weight: 700; letter-spacing: .17em; }
 .signature-head h2 { max-width: 1160px; margin: 0; color: var(--ivory); font-weight: 400; }
-.sequence { border-color: var(--line-light); }
-.sequence-row { min-height: clamp(112px, 11vw, 160px); grid-template-columns: 92px 1fr; border-color: var(--line-light) !important; }
+.sequence { border-color: rgba(245, 241, 232, .3); }
+.sequence-row { min-height: clamp(112px, 11vw, 160px); grid-template-columns: 92px 1fr; border-color: rgba(245, 241, 232, .3) !important; }
 .sequence-row::after { height: 1px; background: var(--gold); }
-.sequence-number { border-color: var(--line-light); color: var(--gold); font-family: "Avenir Next", Avenir, sans-serif; font-size: .78rem; letter-spacing: .12em; }
+.sequence-number { border-color: rgba(245, 241, 232, .3); color: var(--gold); font-family: "Avenir Next", Avenir, sans-serif; font-size: .78rem; letter-spacing: .12em; }
 .sequence-phrase { color: var(--ivory); font-family: "Avenir Next", Avenir, sans-serif; font-size: clamp(2.6rem, 6vw, 7.4rem); font-weight: 400; letter-spacing: -.055em; }
 
 .nate { padding: clamp(100px, 11vw, 170px) 0; background: var(--ivory); }
