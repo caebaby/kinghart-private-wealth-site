@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "Spectral";
+  src: url("assets/fonts/spectral-400.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url("assets/fonts/spectral-500.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url("assets/fonts/spectral-600.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
 :root {
   --paper: #F5F1E8;
   --white: #FBF9F3;
@@ -34,10 +58,10 @@ body {
 
 h1, h2, h3, h4 {
   color: var(--navy);
-  font-family: "Avenir Next", Avenir, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Spectral", "Iowan Old Style", Baskerville, Georgia, serif;
   font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: -.045em;
+  line-height: 1.02;
+  letter-spacing: -.032em;
 }
 
 h1 { font-size: clamp(3.25rem, 6.7vw, 7.1rem); max-width: 900px; }
@@ -334,7 +358,7 @@ p { max-width: 72ch; }
 .sequence-row { min-height: clamp(112px, 11vw, 160px); grid-template-columns: 92px 1fr; border-color: rgba(245, 241, 232, .3) !important; }
 .sequence-row::after { height: 1px; background: var(--gold); }
 .sequence-number { border-color: rgba(245, 241, 232, .3); color: var(--gold); font-family: "Avenir Next", Avenir, sans-serif; font-size: .78rem; letter-spacing: .12em; }
-.sequence-phrase { color: var(--ivory); font-family: "Avenir Next", Avenir, sans-serif; font-size: clamp(2.6rem, 6vw, 7.4rem); font-weight: 400; letter-spacing: -.055em; }
+.sequence-phrase { color: var(--ivory); font-family: "Spectral", "Iowan Old Style", Baskerville, Georgia, serif; font-size: clamp(2.6rem, 6vw, 7.4rem); font-weight: 400; letter-spacing: -.045em; }
 .signature.motion-ready .signature-head,
 .signature.motion-ready .sequence-row {
   transition: transform .78s var(--ease);
@@ -355,7 +379,7 @@ p { max-width: 72ch; }
 .nate-header h2 { grid-column: 1 / -1; margin: 0; }
 .profile-card { grid-template-columns: .9fr 1.1fr; border: 1px solid var(--line); border-radius: 0; background: transparent; }
 .portrait-photo { min-height: 720px; background: var(--blue-light); }
-.portrait-photo img { object-position: 50% 36%; }
+.portrait-photo img { object-position: 50% 28%; }
 .profile-copy { padding: clamp(42px, 5vw, 78px); font-size: .98rem; }
 .profile-copy h3 { margin-bottom: 32px; color: var(--navy); font-weight: 400; }
 .credentials { border-color: var(--line); }
@@ -372,7 +396,9 @@ p { max-width: 72ch; }
 .moment-card::before { display: none; }
 .moment-card > summary { padding: 25px 20px; }
 .moment-card .num { border: 0; color: var(--gold); font-family: "Avenir Next", Avenir, sans-serif; font-size: .74rem; letter-spacing: .12em; }
-.moment-card h4 { color: var(--ivory); font-weight: 500; letter-spacing: -.025em; }
+.moment-card h4,
+.service-card h4 { font-family: "Spectral", "Iowan Old Style", Baskerville, Georgia, serif; }
+.moment-card h4 { color: var(--ivory); font-weight: 500; letter-spacing: -.02em; }
 .expand-copy { color: var(--midnight); background: var(--gold); }
 .expand-copy h4 { color: var(--midnight); }
 .moment-card:hover, .moment-card:focus-within { z-index: 2; box-shadow: 0 20px 60px rgba(13, 24, 39, .35); transform: translateY(-8px); }

@@ -20,8 +20,9 @@ Avoid pure white and pure black. Use tinted alpha values derived from the offici
 ## Typography
 
 - Official logo artwork: Legitima, used only inside the supplied logo asset
-- Interface and content: Avenir Next / Avenir with system fallbacks
-- Headings rely on size, spacing, and weight contrast rather than an imitation luxury serif
+- Titles and headers: Spectral, self-hosted and open-licensed, chosen for a warm old-style character similar to Legitima
+- Interface and body content: Avenir Next / Avenir with system fallbacks
+- Small labels and navigation remain sans serif so the serif headings retain contrast and authority
 - Body line length: 60 to 72 characters
 - Navigation and labels: compact Avenir uppercase with restrained tracking
 
@@ -37,7 +38,7 @@ Avoid pure white and pure black. Use tinted alpha values derived from the offici
 ## Imagery
 
 - Hero: cinematic, believable private office architecture with a restrained Phoenix desert and foothill outlook
-- Nate: current professional headshot until the replacement arrives
+- Nate: current office portrait supplied by the client
 - Legacy: the supplied Neill family portrait as the primary emotional image
 - Grandfather story: restrained black-and-white generational image
 - Avoid cacti, orange desert landscapes, obvious luxury props, market charts, and staged handshakes
